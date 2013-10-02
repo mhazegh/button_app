@@ -34,9 +34,7 @@ $(document).ready(function(){
 	function drawWaveform(event) {
         if(waiting === 0)
         {
-            setTimeout(function(){
-                document.location.href = "http://www.google.com";
-            }, wait_time);
+            setTimeout("redirect()", wait_time);
             waiting = 1;
         }
 		var data = event.frameBuffer;
@@ -52,3 +50,14 @@ $(document).ready(function(){
 		context.stroke();
 	}
 });
+
+function redirect(){
+    var urls = ['https://youtube.googleapis.com/v/kfVsfOSbJY0?autoplay=1',
+                'https://youtube.googleapis.com/v/WnowCNrE4rk?autoplay=1',
+                'https://youtube.googleapis.com/v/ISBeBuVKXL0?autoplay=1',
+                'https://youtube.googleapis.com/v/v1PBptSDIh8?autoplay=1',
+                'https://youtube.googleapis.com/v/-0vB1-ChB_E?autoplay=1'] 
+    var chosen = Math.floor(Math.random()*urls.length);
+
+    document.location.href = urls[chosen];
+}
