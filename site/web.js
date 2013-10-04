@@ -15,6 +15,9 @@ app.get('/', function(req, res) {
 app.get('/show', function(req, res) {
     fs.readdir('videos', function(err, files){
         var chosen = Math.floor(Math.random()*files.length);
+        while(files[chosen] === '.gitignore') {
+            chosen = Math.floor(Math.random()*files.length);
+        }
         var video = 'videos/' + files[chosen];
         res.render('show', {video: video});
     });
